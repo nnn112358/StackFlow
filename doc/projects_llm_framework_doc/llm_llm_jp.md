@@ -1,10 +1,10 @@
 # llm-llm
-Large Model Unit, used to provide large model inference services.
+大規模モデルユニット、大規模モデル推論サービスを提供するために使用します。
 
 ## setup
-Configure the unit.
+ユニットを設定します。
 
-Send json:
+送信するJSON:
 ```json
 {
     "request_id": "2",
@@ -21,19 +21,18 @@ Send json:
     }
 }
 ```
-- request_id: Refer to the basic data explanation.
-- work_id: For configuration unit, it is `llm`.
-- action: The method called is `setup`.
-- object: The type of data transmitted is `llm.setup`.
-- model: The model used is the Chinese model `qwen2.5-0.5B-prefill-20e`.
-- response_format: The result returned is in `llm.utf-8.stream`, utf-8 streaming output.
-- input: The input is `llm.utf-8`, representing input from the user.
-- enoutput: Whether to enable user result output.
-- max_token_len: Maximum output token, this value is limited by the model's maximum limit.
-- prompt: The prompt for the model.
+- request_id: 基本データの説明を参照
+- work_id: 設定ユニットの場合は `llm`
+- action: 呼び出すメソッドは `setup`
+- object: 送信するデータの種類は `llm.setup`
+- model: 使用するモデルは中国語モデル `qwen2.5-0.5B-prefill-20e`
+- response_format: 結果は `llm.utf-8.stream`（UTF-8ストリーミング出力）形式で返される
+- input: 入力は `llm.utf-8`（ユーザーからの入力を表す）
+- enoutput: ユーザー結果出力を有効にするかどうか
+- max_token_len: 最大出力トークン数、この値はモデルの最大制限によって制限される
+- prompt: モデルのプロンプト
 
-Response json:
-
+レスポンスJSON:
 ```json
 {
     "created": 1731488402,
@@ -47,13 +46,13 @@ Response json:
     "work_id": "llm.1002"
 }
 ```
-- created: Message creation time, unix time.
-- work_id: The successfully created work_id unit.
+- created: メッセージ作成時刻（Unixタイム）
+- work_id: 正常に作成されたwork_idユニット
 
 ## link
-Link the output of the upper unit.
+上位ユニットの出力をリンクします。
 
-Send json:
+送信するJSON:
 ```json
 {
     "request_id": "3",
@@ -64,8 +63,7 @@ Send json:
 }
 ```
 
-Response json:
-
+レスポンスJSON:
 ```json
 {
     "created": 1731488402,
@@ -79,14 +77,13 @@ Response json:
     "work_id": "llm.1002"
 }
 ```
-error::code of 0 indicates successful execution.
+error::codeが0の場合は実行成功を示します。
 
-Link the llm and kws units so that when kws issues wake-up data, the llm unit stops the previous unfinished inference for repeated wake-up functionality.
+llmとkwsユニットをリンクすることで、kwsがウェイクアップデータを発行した時に、llmユニットは繰り返しウェイクアップ機能のために前回の未完了の推論を停止します。
 
-> **When linking, ensure that kws has been configured and is in working status. Linking can also be done during the setup phase.**
+> **リンク時には、kwsが設定済みで動作状態にあることを確認してください。リンクはsetup段階でも行うことができます。**
 
-Example:
-
+例：
 ```json
 {
     "request_id": "2",
@@ -105,9 +102,9 @@ Example:
 ```
 
 ## unlink
-Unlink.
+リンクを解除します。
 
-Send json:
+送信するJSON:
 ```json
 {
     "request_id": "4",
@@ -118,8 +115,7 @@ Send json:
 }
 ```
 
-Response json:
-
+レスポンスJSON:
 ```json
 {
     "created": 1731488402,
@@ -133,12 +129,12 @@ Response json:
     "work_id": "llm.1002"
 }
 ```
-error::code of 0 indicates successful execution.
+error::codeが0の場合は実行成功を示します。
 
 ## pause
-Pause the unit.
+ユニットを一時停止します。
 
-Send json:
+送信するJSON:
 ```json
 {
     "request_id": "5",
@@ -147,8 +143,7 @@ Send json:
 }
 ```
 
-Response json:
-
+レスポンスJSON:
 ```json
 {
     "created": 1731488402,
@@ -162,12 +157,12 @@ Response json:
     "work_id": "llm.1002"
 }
 ```
-error::code of 0 indicates successful execution.
+error::codeが0の場合は実行成功を示します。
 
 ## work
-Resume the unit.
+ユニットを再開します。
 
-Send json:
+送信するJSON:
 ```json
 {
     "request_id": "6",
@@ -176,8 +171,7 @@ Send json:
 }
 ```
 
-Response json:
-
+レスポンスJSON:
 ```json
 {
     "created": 1731488402,
@@ -191,12 +185,12 @@ Response json:
     "work_id": "llm.1002"
 }
 ```
-error::code of 0 indicates successful execution.
+error::codeが0の場合は実行成功を示します。
 
 ## exit
-Exit the unit.
+ユニットを終了します。
 
-Send json:
+送信するJSON:
 ```json
 {
     "request_id": "7",
@@ -205,8 +199,7 @@ Send json:
 }
 ```
 
-Response json:
-
+レスポンスJSON:
 ```json
 {
     "created": 1731488402,
@@ -220,13 +213,13 @@ Response json:
     "work_id": "llm.1002"
 }
 ```
-error::code of 0 indicates successful execution.
+error::codeが0の場合は実行成功を示します。
 
-## Task Information
+## タスク情報
 
-Get task list.
+タスクリストの取得：
 
-Send JSON:
+送信するJSON:
 ```json
 {
 	"request_id": "2",
@@ -235,7 +228,7 @@ Send JSON:
 }
 ```
 
-Response JSON:
+レスポンスJSON:
 ```json
 {
     "created":1731652149,
@@ -250,9 +243,9 @@ Response JSON:
 }
 ```
 
-Get task runtime parameters.
+タスクの実行時パラメータの取得：
 
-Send JSON:
+送信するJSON:
 ```json
 {
 	"request_id": "2",
@@ -261,7 +254,7 @@ Send JSON:
 }
 ```
 
-Response JSON:
+レスポンスJSON:
 ```json
 {
     "created":1731652187,
@@ -281,4 +274,4 @@ Response JSON:
 }
 ```
 
-> **Note: work_id increases according to the initialization registration order of the unit and is not a fixed index value.**
+> **注意: work_idはユニットの初期化登録順に増加し、固定のインデックス値ではありません。**
