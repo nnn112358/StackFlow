@@ -29,11 +29,8 @@ llm-sys、llm-audio、llm-kws、llm-asr、llm-llm、llm-melottsが協調動作�
 
 中国語環境:
 
-Chinese environment:
-
-1、reset
-
-send :
+1、リセット
+送信:
 
 ```json
 {
@@ -42,12 +39,10 @@ send :
     "action": "reset"
 }
 ```
-waiting reset over!
+リセット完了を待ちます!
 
-2、init all unit
-
-send :
-
+2、全ユニットの初期化
+送信:
 ```json
 {
     "request_id": "1",
@@ -106,7 +101,7 @@ send :
     }
 }
 ```
-waiting return work_id:
+work_idの返信を待ちます:
 ```json
 {"created":1731488371,"data":"None","error":{"code":0,"message":""},"object":"None","request_id":"3","work_id":"asr.1001"}
 {"created":1731488377,"data":"None","error":{"code":0,"message":""},"object":"None","request_id":"4","work_id":"llm.1002"}
@@ -114,7 +109,7 @@ waiting return work_id:
 {"created":1731488402,"data":"None","error":{"code":0,"message":""},"object":"None","request_id":"2","work_id":"kws.1000"}
 ```
 
-creat assembly line：
+アセンブリラインの作成：
 ```json
 {
     "request_id": "2",
@@ -157,8 +152,7 @@ creat assembly line：
 
 ```
 
-waiting return status:
-
+ステータスの返信を待ちます:
 ```json
 {"created":1731488403,"data":"None","error":{"code":0,"message":""},"object":"None","request_id":"3","work_id":"llm.1002"}
 {"created":1731488403,"data":"None","error":{"code":0,"message":""},"object":"None","request_id":"4","work_id":"melotts.1003"}
